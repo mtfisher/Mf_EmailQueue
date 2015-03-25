@@ -1,0 +1,105 @@
+<?php /** @var $this Mf_EmailQueue_Block_Adminhtml_Email_View_Tab_Info */ ?>
+<?php $_email = $this->getEmail(); ?>
+<?php $_emailParams = $this->getEmailParams(); ?>
+<?php $_toEmailData = $this->getToEmails(); ?>
+<?php $_ccEmailData = $this->getCCEmails(); ?>
+<?php $_bccEmailData = $this->getBCCEmails(); ?>
+<div>
+    <div class="box-left">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4><?php echo Mage::helper('mf_emailqueue')->__('Email Data') ?></h4>
+            </div>
+            <div class="fieldset">
+                <table cellspacing="0" class="form-list">
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('Created Data') ?></label></td>
+                        <td class="value"><strong><?php echo $this->formatDate($_email->getCreatedAt(), 'medium', true) ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('Entity Type') ?></label></td>
+                        <td class="value"><strong><?php echo $_email->getEntityType() ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('Event Type') ?></label></td>
+                        <td class="value"><strong><?php echo $_email->getEventType() ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('Subject') ?></label></td>
+                        <td class="value"><strong><?php echo $_emailParams->getSubject() ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('From Name') ?></label></td>
+                        <td class="value"><strong><?php echo $_emailParams->getFromName() ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('mf_emailqueue')->__('From Email') ?></label></td>
+                        <td class="value"><strong><?php echo $_emailParams->getFromEmail() ?></strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="box-right">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4><?php echo Mage::helper('mf_emailqueue')->__('Email Recipient (To)') ?></h4>
+            </div>
+            <div class="fieldset">
+                <table cellspacing="0" class="form-list">
+                    <?php foreach($_toEmailData as $emails): ?>
+                    <tr>
+                        <td class="label"><label><?php echo $emails['name'] ?></label></td>
+                        <td class="value"><strong><?php echo $emails['email'] ?></strong></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <?php if(!empty($_ccEmailData)): ?>
+        <div class="box-left">
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4><?php echo Mage::helper('mf_emailqueue')->__('Email Recipient (Cc)') ?></h4>
+                </div>
+                <div class="fieldset">
+                    <table cellspacing="0" class="form-list">
+                        <?php foreach($_ccEmailData as $emails): ?>
+                            <tr>
+                                <td class="label"><label><?php echo $emails['name'] ?></label></td>
+                                <td class="value"><strong><?php echo $emails['email'] ?></strong></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if(!empty($_bccEmailData)): ?>
+        <?php if(!empty($_ccEmailData)): ?>
+                <div class="box-right">
+        <?php else: ?>
+                <div class="box-left">
+        <?php endif; ?>
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4><?php echo Mage::helper('mf_emailqueue')->__('Email Recipient (Bcc)') ?></h4>
+                </div>
+                <div class="fieldset">
+                    <table cellspacing="0" class="form-list">
+                        <?php foreach($_bccEmailData as $emails): ?>
+                            <tr>
+                                <td class="label"><label><?php echo $emails['name'] ?></label></td>
+                                <td class="value"><strong><?php echo $emails['email'] ?></strong></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+</div>

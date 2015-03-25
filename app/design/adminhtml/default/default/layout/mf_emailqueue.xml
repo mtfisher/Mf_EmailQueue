@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_email_index>
+        <reference name="content">
+            <block type="mf_emailqueue/adminhtml_email" name="mf_emailqueue_queue" />
+        </reference>
+    </adminhtml_email_index>
+    <adminhtml_email_view>
+        <reference name="content">
+            <block type="mf_emailqueue/adminhtml_email_view" name="email_view"></block>
+        </reference>
+        <reference name="left">
+            <block type="mf_emailqueue/adminhtml_email_view_tabs" name="email_view_tabs">
+                <block type="mf_emailqueue/adminhtml_email_view_tab_info" name="email_tab_info"
+                       template="mf/emailqueue/info.phtml" />
+                <block type="mf_emailqueue/adminhtml_email_view_tab_email" name="email_tab_email"
+                       template="mf/emailqueue/email.phtml" />
+                <action method="addTab"><name>email_info</name><block>email_tab_info</block></action>
+                <action method="addTab"><name>email_content</name><block>email_tab_email</block></action>
+            </block>
+        </reference>
+    </adminhtml_email_view>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mf_EmailQueue>
+            <version>0.1.0</version>
+        </Mf_EmailQueue>
+    </modules>
+    <global>
+        <blocks>
+            <mf_emailqueue>
+                <class>Mf_EmailQueue_Block</class>
+            </mf_emailqueue>
+        </blocks>
+        <helpers>
+            <mf_emailqueue>
+                <class>Mf_EmailQueue_Helper</class>
+            </mf_emailqueue>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Mf_EmailQueue before="Mage_Adminhtml">Mf_EmailQueue_Adminhtml</Mf_EmailQueue>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <mf_emailqueue>
+                    <file>mf_emailqueue.xml</file>
+                </mf_emailqueue>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

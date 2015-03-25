@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mf_EmailQueue>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mf_EmailQueue>
+    </modules>
+</config>
